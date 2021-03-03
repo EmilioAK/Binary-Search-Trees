@@ -37,7 +37,7 @@ class Tree
 
   def delete(value, node = @tree)
     return if node.nil?
-    return combine_queue(node) if node.value == value
+    return combine_children(node) if node.value == value
 
     if value > node.value
       node.right = delete(value, node.right)
@@ -143,7 +143,7 @@ class Tree
 
   private
 
-  def combine_queue(tree)
+  def combine_children(tree)
     return nil if no_queue?(tree)
     return tree.right || tree.left if only_one_child?(tree)
 
