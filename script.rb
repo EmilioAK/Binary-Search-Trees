@@ -8,7 +8,7 @@ def main
   puts "In-order: #{tree.inorder} \n\n"
 
   Array.new(25) { rand(1..100) }.each { |number| tree.insert(number) }
-  tree.rebalance unless tree.balanced?
+  tree.rebalance! unless tree.balanced?
   puts "Balanced: #{tree.balanced?}"
   puts "Pre-order: #{tree.preorder}"
   puts "Post-order: #{tree.postorder}"
