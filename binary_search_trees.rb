@@ -16,6 +16,7 @@ class Tree
   end
 
   def insert(value, node = @tree)
+    return Node.new(value) if node.nil?
     return if value == node.value
 
     # Since its the same for boths sides it feels like I should abstract the code somehow, but I can't think of anything
@@ -58,8 +59,10 @@ class Tree
   end
 
   def level_order_iterative(node = @tree)
-    queue = [node.left, node.right]
+    return if node.nil? # Only needed to handle an empty start-tree
+
     visited = [node.value]
+    queue = [node.left, node.right]
     while queue.any?
       child = queue.shift
       queue << child.left unless child.left.nil?
