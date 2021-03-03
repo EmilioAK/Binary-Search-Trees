@@ -144,10 +144,10 @@ class Tree
   private
 
   def combine_children(tree)
-    return nil if no_queue?(tree)
+    return nil if no_children?(tree)
     return tree.right || tree.left if only_one_child?(tree)
 
-    if two_queue?(tree)
+    if two_children?(tree)
       leftmost_value = leftmost_child_value(tree.right)
       root = Node.new(leftmost_value)
       root.left = tree.left
@@ -164,7 +164,7 @@ class Tree
     end
   end
 
-  def no_queue?(node)
+  def no_children?(node)
     node.left.nil? && node.right.nil?
   end
 
@@ -172,7 +172,7 @@ class Tree
     node.left.nil? ^ node.right.nil?
   end
 
-  def two_queue?(node)
+  def two_children?(node)
     !node.left.nil? && !node.right.nil?
   end
 
